@@ -1,0 +1,47 @@
+version: "3"
+services:
+  ac_flask:
+    build: .
+    container_name: ac_flask
+    command: bash -c "python gen_selfsigned.py && python run.py -p 443"
+    networks:
+      - overlay
+    volumes:
+      - ./src:/flask
+    ports:
+      - "443:443"
+    depends_on:
+      - "ac_flask_db"
+    environment:
+      DB_HOST: "ac_flask_db"
+      DB_USER: "root"
+      DB_PSW: "root"
+      DB_SCHEMA: "ac"
+      SSL_CN: "ac-flask-demo.me"
+      CSRF_KEY: "!!!----change-me-----!!!"
+      HTTPS_HOST: "0.0.0.0"
+      HTTPS_PORT: 443
+      IS_DEUBG: "True"
+      SSL_PUB: "cert.pem"
+      SSL_PRIV: "key.pem"
+      TOKEN_EXPIRED: 600
+      STORAGE_PATH: "storage/"
+      ALLOWED_SUFFIX: "'jpg', 'jpeg', 'png', 'bmp', 'gif', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'"
+      NACL_SK_PATH: "config/nacl_sk"
+  ac_flask_db:
+    container_name: ac_flask_db
+    image: mariadb:5.5
+    restart: always
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - overlay
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-proot"]
+      timeout: 10s
+      retries: 10
+
+networks:
+  overlay:

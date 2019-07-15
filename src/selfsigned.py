@@ -31,7 +31,7 @@ def generate_selfsigned_cert(hostname, public_ip, private_ip):
     # Generate our key
     key = rsa.generate_private_key(
         public_exponent=65537,
-        key_size=1024,
+        key_size=2048,
         backend=default_backend()
     )
 

@@ -3,7 +3,7 @@ from views import *
 
 def run(app):
     from config import host, port, debug, ssl_context
-    app.run(host=host, port=port, debug=debug, ssl_context=ssl_context)
+    app.run(host=host, port=int(port), debug=debug, ssl_context=ssl_context)
 
 
 def main():

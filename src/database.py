@@ -14,6 +14,5 @@ def create_app(name):
     app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
     db.init_app(app)
     with app.app_context():
-        from models import User
         db.create_all()
     return app
