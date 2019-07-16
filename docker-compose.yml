@@ -26,7 +26,7 @@ services:
       SSL_PRIV: "key.pem"
       TOKEN_EXPIRED: 600
       STORAGE_PATH: "storage/"
-      ALLOWED_SUFFIX: "'jpg', 'jpeg', 'png', 'bmp', 'gif', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'"
+      ALLOWED_SUFFIX: "'jpg', 'jpeg', 'png', 'bmp', 'gif', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'"
       NACL_SK_PATH: "config/nacl_sk"
   ac_flask_db:
     container_name: ac_flask_db

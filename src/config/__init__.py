@@ -13,10 +13,10 @@ port = os.environ.get("HTTPS_PORT", default=443)
 debug = os.environ.get("IS_DEBUG", default=True)
 ssl_context = (os.environ.get("SSL_PUB", default='cert.pem'), os.environ.get("SSL_PRIV", default='key.pem'))
 
-token_expired = os.environ.get("TOKEN_EXPIRED", default=600)
+token_expired = float(os.environ.get("TOKEN_EXPIRED", default=600))
 
 storage_path = os.environ.get("STORAGE_PATH", default="storage/")
 
-allowed_file_suffix_list = os.environ.get("ALLOWED_SUFFIX", default="'jpg', 'jpeg', 'png', 'bmp', 'gif', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'")
+allowed_file_suffix_list = tuple(os.environ.get("ALLOWED_SUFFIX", default="'jpg', 'jpeg', 'png', 'bmp', 'gif', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx'").replace("'", "").replace(" ", "").split(','))
 
 nacl_sk_path = os.environ.get("NACL_SK_PATH", default="config/nacl_sk")
