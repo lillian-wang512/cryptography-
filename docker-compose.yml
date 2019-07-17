@@ -9,7 +9,7 @@ services:
     volumes:
       - ./src:/flask
     ports:
-      - "443:443"
+      - "127.0.0.1:443:443"
     depends_on:
       - "ac_flask_db"
     environment:

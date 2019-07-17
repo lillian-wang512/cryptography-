@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, flash, redirect, request
 from models import File
 from common import *
+from flask import current_app as app
 
 file = Blueprint('file', __name__)
 
@@ -9,6 +10,7 @@ file = Blueprint('file', __name__)
 @login_required
 def get__file(user):
     from models import File
+    app.logger.debug("get__file with user.id_=%s", user)
     files = File.query.filter(File.creator_id == user.id_).all()
     return render_template('file.html', username=user.username, files=files)
 
