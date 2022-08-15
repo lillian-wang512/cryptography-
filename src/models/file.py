@@ -85,6 +85,11 @@ class File(db.Model):
                 content = secret.symmetric_decrypt(secret.decrypt(user.encrypted_symmetric_key), content)
             elif type_ == 'encrypted':
                 filename = filename + '.encrypted'
+        #对称密钥
+        if type == 'symmetric_key':
+            content = secret.decrypt(user.encrypted_symmetric_key)
+            filename = filename + '.symmetric_key'
+
         response = make_response(content)
         response.headers['Content-Disposition'] = 'attachment; filename={}'.format(filename)
         return response
