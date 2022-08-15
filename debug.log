@@ -1,0 +1,4 @@
+[0804/231108.443:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\zz\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\ccfb570d-eefb-4ae8-9f10-90fa71baf38d: 系统找不到指定的文件。 (0x2)
+[0804/231108.444:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\zz\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\cb6b6e6b-3484-46ce-a7b3-c4e9f7e05870: 系统找不到指定的文件。 (0x2)
+[0804/231108.444:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\zz\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\ccfb570d-eefb-4ae8-9f10-90fa71baf38d: 系统找不到指定的文件。 (0x2)
+[0804/231108.445:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\zz\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\cb6b6e6b-3484-46ce-a7b3-c4e9f7e05870: 系统找不到指定的文件。 (0x2)

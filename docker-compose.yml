@@ -3,7 +3,8 @@ services:
   ac_flask:
     build: .
     container_name: ac_flask
-    command: bash -c "python gen_selfsigned.py && python run.py -p 443"
+    #command: bash -c "python gen_selfsigned.py && python run.py -p 443"
+    command: bash -c "python run.py -p 443"
     networks:
       - overlay
     volumes:
@@ -22,8 +23,10 @@ services:
       HTTPS_HOST: "0.0.0.0"
       HTTPS_PORT: 443
       IS_DEUBG: "True"
-      SSL_PUB: "cert.pem"
-      SSL_PRIV: "key.pem"
+      #SSL_PUB: "cert.pem"
+      SSL_PUB: "RootCA_crt.pem"
+      #SSL_PRIV: "key.pem"
+      SSL_PRIV: "RootCA_key.pem"
       TOKEN_EXPIRED: 600
       STORAGE_PATH: "storage/"
       ALLOWED_SUFFIX: "'jpg', 'jpeg', 'png', 'bmp', 'gif', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'"
