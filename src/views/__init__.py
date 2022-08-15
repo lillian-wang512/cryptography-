@@ -4,3 +4,5 @@ from .login import login
 from .logout import logout
 from .file import file
 from .shared_file import shared_file
+#加入
+from .reset import reset

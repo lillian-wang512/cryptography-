@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect
+from flask import Blueprint, render_template, request, flash, redirect,url_for
 
 shared_file = Blueprint('shared_file', __name__)
 
@@ -22,7 +22,7 @@ def get__download():
         assert username, 'missing username'
         type_ = request.args.get('type')
         assert type_, 'missing type'
-        assert type_ in ('encrypted', 'signature'), 'unknown type'
+        assert type_ in ('encrypted', 'signature','symmetric_key'), 'unknown type'
         user = User.get_by(username=username)
         return File.download_file(user, filename, type_)
     except AssertionError as e:

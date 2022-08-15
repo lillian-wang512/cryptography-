@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, make_response
+from flask import Blueprint, render_template, make_response,url_for
 from common import *
 
 root = Blueprint('root', __name__)
