@@ -1,13 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://w3.org/1999/xmlns">
+
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
 </head>
+
 <body>
-    <h1>Hello World!</h1>
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="header">Hello World!</div>
+            <div class="form-wrapper">
+                <div class="btn2" style="text-align: center; padding: 10px;width: 100%;margin-top: 40px">
+                    <a href="/file">我的文件</a>
+                </div>
+                <div class="btn2" style="text-align: center; padding: 10px;width: 100%;margin-top: 40px">
+                    <a href="/shared_file">共享文件</a>
+                </div>
+                <div class="btn2" style="text-align: center; padding: 10px;width: 100%;margin-top: 40px">
+                    <a href="/logout" style="text-align: center;">退出</a>
+                </div>
+                <!-- <a href="/file">我的文件</a>
+                <a href="/shared_file">共享文件</a>
+                <a href="/logout">退出</a> -->
+
+
+                <!-- </div> -->
+
+            </div>
+        </div>
+    </div>
+    <!-- <h1>Hello World!</h1>
     <a href="/file">我的文件</a>
     <a href="/shared_file">共享文件</a>
-    <a href="/logout">退出</a>
+    <a href="/logout">退出</a> -->
 </body>
+
 </html>

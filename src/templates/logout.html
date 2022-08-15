@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Refresh" content="5; url=https://127.0.0.1">
     <title>Logout</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
 </head>
+
 <body>
-    <h1>您已退出</h1>
-    <a href="/login">登录</a>
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="header">您已退出</div>
+            <div class="form-wrapper">
+                <div class="btn2" style="text-align: center; padding: 10px;width: 100%;margin-top: 40px">
+                    <a href="/login">登录</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <h1>您已退出</h1>
+    <a href="/login">登录</a> -->
+
+
 </body>
+
 </html>

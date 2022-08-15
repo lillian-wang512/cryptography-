@@ -14,23 +14,23 @@
         {% endif %}
 
         <div class="login-wrapper">
-            <div class="header">注册</div>
+            <div class="header">忘记密码</div>
             <div class="form-wrapper">
 
-                <form action="/register/" method="post">
+                <form action="/reset/" method="post">
                     <div type="text" name="username" placeholder="username" class="input-item">
                         <p>{{ form.username(placeholder='用户名' ,class='button') }}</p>
                     </div>
                     <div type="password" name="password" placeholder="password" class="input-item">
                         <p>{{ form.password(placeholder='密码' ,class='button') }}</p>
                     </div>
-                    <div type="password" name="confirm_password" placeholder="password" class="input-item">
+                    <!-- <div type="password" name="confirm_password" placeholder="password" class="input-item">
                         <p>{{ form.password(placeholder='确认密码' ,class='button') }}</p>
-                    </div>
+                    </div> -->
 
                     <p>{{ form.csrf_token }}</p>
                     <div class="btn">
-                        <p><input type="submit" value="注册" class="button"></p>
+                        <p><input type="submit" value="更改" class="button"></p>
                     </div>
                 </form>
                 <div>
@@ -38,8 +38,8 @@
                     <p>注：密码设置至少包含一个大写字母和一个数字
                         <br/>
                         <br/>&nbsp&nbsp&nbsp&nbsp-、_、.等合法字符集范围之外的字符不允许使用
-                        <br/>
-                        <br/>&nbsp&nbsp&nbsp&nbsp用户名长度在2-36位，密码长度在8-36位
+                        <!-- <br/>
+                        <br/>&nbsp&nbsp&nbsp&nbsp用户名长度在2-36位，密码长度在8-36位 -->
                     </p>
 
                 </div>
@@ -64,3 +64,46 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset:="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <h1>修改页面</h1>
+    <form method="get" action='/mysqlmodify'>
+        <label>用户名:<input type="text" name="username" value="" placeholder="请输入用户名"></label>
+        <br>
+        <label>密码:<input type="password" name="password" value="" placeholder="请输入密码"></label>
+        <br>
+        <input type="submit" value="修改密码">
+    </form>
+    <script></script>
+
+    <body>
+
+</html> -->

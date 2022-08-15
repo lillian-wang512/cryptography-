@@ -1,15 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>上传文件</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
+
 </head>
+
 <body>
-    <form action="/file/upload" method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="header">上传文件</div>
+            <div class="form-wrapper">
+                <form action="/file/upload" method="post" enctype="multipart/form-data">
+                    <p>请选择待上传的文件：{{ form.file }}</p>
+                    <br/>
+                    <p>{{ form.csrf_token }}</p>
+                    <input type="submit" value="上传">
+                </form>
+                <a href="/logout">退出</a>
+
+                <!-- <div class="btn2" style="text-align: center; padding: 10px;width: 100%;margin-top: 40px">
+                    <a href="/file">我的文件</a>
+                </div>
+                <div class="btn2" style="text-align: center; padding: 10px;width: 100%;margin-top: 40px">
+                    <a href="/shared_file">共享文件</a>
+                </div>
+                <div class="btn2" style="text-align: center; padding: 10px;width: 100%;margin-top: 40px">
+                    <a href="/logout" style="text-align: center;">退出</a>
+                </div> -->
+                <!-- <a href="/file">我的文件</a>
+                <a href="/shared_file">共享文件</a>
+                <a href="/logout">退出</a> -->
+
+
+                <!-- </div> -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- <form action="/file/upload" method="post" enctype="multipart/form-data">
         <p>请选择待上传的文件：{{ form.file }}</p>
         <p>{{ form.csrf_token }}</p>
         <input type="submit" value="上传">
     </form>
-    <a href="/logout">退出</a>
+    <a href="/logout">退出</a> -->
 </body>
+
 </html>

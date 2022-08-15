@@ -1,21 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://w3.org/1999/xmlns">
+
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
-</head>
-<body>
-    {% if message %}
-    <p style="color:red">{{ message }}</p>
-    {% endif %}
-    <form action="/login/" method="post">
-        <p>{{ form.username(placeholder='用户名') }}</p>
-        <p>{{ form.password }}</p>
-        <p>{{ form.csrf_token }}</p>
-        <p><input type="submit" value="登录"></p>
-    </form>
+    <title>中传放心传--登录</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
 
-    <a href="/register">注册</a>
-    <a href="/shared_file">共享文件</a>
+</head>
+
+<body>
+    <!-- 添加的div格式 -->
+    <div class="container">
+        {% if message %}
+        <p style="color:red">{{ message }}</p>
+        {% endif %}
+
+
+        <div class="login-wrapper">
+            <div class="header">Login</div>
+            <div class="form-wrapper">
+
+                <form action="/login/" method="post">
+                    <div type="text" name="username" placeholder="username" class="input-item">
+                        <p>{{ form.username(placeholder='用户名' ,class='button') }}</p>
+                    </div>
+                    <div type="password" name="password" placeholder="password" class="input-item">
+                        <p>{{ form.password(placeholder='密码' ,class='button') }}</p>
+                    </div>
+
+                    <p>{{ form.csrf_token }}</p>
+                    <div class="btn">
+                        <p><input type="submit" value="登录" class="button"></p>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="msg">
+                &nbsp;&nbsp;&nbsp;还没有账户？
+                <a href="/register">注册</a>
+                <a href="/reset">忘记密码</a>
+                <p></p>
+                直接查看文件?
+                <a href="/shared_file">共享文件</a>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- 添加div格式结束 -->
+
+    <!-- <div>
+        {% if message %}
+        <p style="color:red">{{ message }}</p>
+        {% endif %}
+        <form action="/login/" method="post">
+            <p>{{ form.username(placeholder='用户名') }}</p>
+            <p>{{ form.password }}</p>
+            <p>{{ form.csrf_token }}</p>
+            <p><input type="submit" value="登录"></p>
+        </form>
+
+        <a href="/register">注册</a>
+        <a href="/shared_file">共享文件</a>
+
+    </div> -->
 </body>
+
 </html>

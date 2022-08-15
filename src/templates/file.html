@@ -1,11 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>文件</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
+
+    <script type="text/javascript">
+        var p = "";
+
+        function init(i) {
+            var div = document.getElementById("test");
+            div.innerHTML = i + "秒后失效";
+            i--;
+            p = window.setTimeout(function() {
+                init(i)
+            }, 1000);
+            if (i == -1) {
+                change();
+            }
+        }
+
+        function change() {
+            window.clearTimeout(p);
+            var div = document.getElementById("test");
+            div.innerHTML = "已失效";
+            document.links[2].href = "javascript:alert('已失效')";
+            document.links[3].href = "javascript:alert('已失效')";
+        }
+        window.onload = function() {
+            init(5);
+        };
+    </script>
+
+
 </head>
+
+
+
+
+
+<!-- <body onload=begintimer()> -->
+
 <body>
-    {% with messages = get_flashed_messages() %}
+    <div class="container">
+
+        <!-- <div align=middle>
+            <FORM name=lefttime>
+                <P>
+                    <INPUT size=25 name=left style="border:0" class="container">
+                </P>
+            </FORM>
+        </div> -->
+
+        <div class="login-wrapper">
+
+
+
+            {% with messages = get_flashed_messages() %} {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %} {% endwith %}
+            <div class="header">
+                <p>{{username}}，您好！</p>
+            </div>
+
+            {% if files %}
+            <p>您当前上传了以下文件</p>
+            <ui>
+                {% for file in files %}
+                <li>
+                    {{file.filename}}(已加密) {% if file.shared %} (已共享) {% else %} (未共享) {% endif %}<br/>
+                    <a href="/file/download?filename={{file.filename}}&type=encrypted">下载</a><br/>
+                    <a href="/file/download?filename={{file.filename}}&type=hashvalue">下载哈希值</a><br/>
+                    <a href="/file/download?filename={{file.filename}}&type=plaintext">解密并下载</a><br/>
+                    <a href="/file/download?filename={{file.filename}}&type=signature">下载签名文件</a><br/>
+                    <a href="/file/download?filename={{file.filename}}&type=symmetric_key">下载对称密钥</a><br/>
+                    <div id="test"></div><br/>
+                    <a href="/file/share?filename={{file.filename}}">
+                {% if file.shared %}
+                    取消共享
+                {% else %}
+                    进行共享
+                {% endif %}
+                </a><br/>
+                    <a href="/file/remove?filename={{file.filename}}">删除</a><br/>
+                </li>
+                {% endfor %}
+            </ui>
+            {% else %}
+            <p>您当前没有上传任何文件</p>
+            {% endif %}
+            <br/><br/><a href="/file/upload">上传</a>
+            <br/><a href="/shared_file">共享文件</a>
+            <br/><a href="/logout">退出</a>
+        </div>
+    </div>
+
+
+
+
+    <!-- {% with messages = get_flashed_messages() %}
         {% for message in messages %}
             <p>{{message}}</p>
         {% endfor %}
@@ -42,6 +136,75 @@
     {% endif %}
     <a href="/file/upload">上传</a>
     <a href="/shared_file">共享文件</a>
-    <a href="/logout">退出</a>
+    <a href="/logout">退出</a> -->
+
+    <!-- <CENTER>
+        <span class="STYLE1"><FONT color=red>访问时间限制脚本</FONT></span>
+    </CENTER>
+    <BR> -->
+
+    <!-- <SCRIPT language=JavaScript>
+        var limit = "0:100"
+        if (document.images) {
+            var parselimit = limit.split(":")
+            parselimit = parselimit[0] * 60 + parselimit[1] * 1
+        }
+
+        function begintimer() {
+            if (!document.images)
+                return
+
+            if (parselimit == 1)
+                window.location = "zh1.htm"
+            else {
+                parselimit -= 1
+                curmin = Math.floor(parselimit / 60)
+                cursec = parselimit
+                if (curmin != 0)
+                    curtime = "你只有" + curmin + "分" + cursec + "秒的时间保存此页。"
+                else
+                    curtime = "你只有" + cursec + "秒的时间访问此页。"
+                setTimeout("begintimer()", 1000)
+                document.lefttime.left.value = curtime
+                window.status = curtime
+            }
+        }
+    </SCRIPT> -->
+
+
+
+
+
+    <!-- <BR>
+    <CENTER>
+        <TABLE borderColor=#00FFFF border=5 borderlight="green"> 
+        <TBODY>
+                <TR>
+                    <TD align=middle>
+                        <div align="center"><span class="STYLE2">脚本显示区</span></div>
+                    </TD>
+                </TR>
+                <TR>
+        <TD align=middle>
+            <FORM name=lefttime>
+                <P>
+                    <INPUT size=25 name=left>
+                </P>
+            </FORM>
+        </TD>
+         </TR>
+            </TBODY> 
+        </TABLE> 
+    </CENTER>
+    <br> -->
+
+
+
+
+
+
+
+
 </body>
+
 </html>

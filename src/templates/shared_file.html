@@ -1,11 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>共享的文件</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}">
+
 </head>
+
 <body>
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages() %} {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %} {% endwith %} {% if list %}
+
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="header">当前有以下共享文件</div>
+            <div class="form-wrapper">
+                <ui>
+                    {% for e in list %}
+                    <li>
+                        {{e[0]}} by {{e[1]}} (已加密)
+                        <br/>
+                        <a href="/shared_file/download?filename={{e[0]}}&username={{e[1]}}&type=encrypted">下载</a>
+                        <a href="/shared_file/download?filename={{e[0]}}&username={{e[1]}}&type=signature">下载签名文件</a>
+                        <a href="/shared_file/download?filename={{e[0]}}&username={{e[1]}}&type=symmetric_key">下载签名文件</a>
+                    </li>
+                    {% endfor %}
+                </ui>
+
+                {% else %}
+                <div class="container">
+                    <div class="login-wrapper">
+                        <div class="header">当前没有共享文件</div>
+                        <!-- <p>当前没有任何共享文件</p> -->
+                        {% endif %}
+                        <a href="/">首页</a>
+                        <br/><br/>
+                        <a href="/public_key">获取网站公钥</a> -->
+                    </div>
+                </div>
+
+                <!-- <div class="btn2" style="text-align: center; padding: 10px;width: 100%;margin-top: 40px">
+                    <a href="/file">我的文件</a>
+                </div>
+                <div class="btn2" style="text-align: center; padding: 10px;width: 100%;margin-top: 40px">
+                    <a href="/shared_file">共享文件</a>
+                </div>
+                <div class="btn2" style="text-align: center; padding: 10px;width: 100%;margin-top: 40px">
+                    <a href="/logout" style="text-align: center;">退出</a>
+                </div> -->
+                <!-- <a href="/file">我的文件</a>
+                <a href="/shared_file">共享文件</a>
+                <a href="/logout">退出</a> -->
+
+
+                <!-- </div> -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- {% with messages = get_flashed_messages() %}
         {% for message in messages %}
             <p>{{message}}</p>
         {% endfor %}
@@ -25,6 +82,7 @@
         <p>当前没有任何共享文件</p>
     {% endif %}
     <a href="/">首页</a>
-    <a href="/public_key">获取网站公钥</a>
+    <a href="/public_key">获取网站公钥</a> -->
 </body>
+
 </html>
