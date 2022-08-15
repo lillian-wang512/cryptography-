@@ -44,7 +44,8 @@ def symmetric_decrypt(symmetric_key: bytes, ciphertext: bytes):
 
 
 def get_pk_raw():
-    return PrivateKey(sk_raw).public_key.encode()
+    #return PrivateKey(sk_raw).public_key.encode()
+    return SigningKey(sk_raw).verify_key.encode()
 
 
 def new_pair():

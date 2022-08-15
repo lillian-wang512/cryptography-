@@ -20,6 +20,8 @@ def main():
     app.register_blueprint(logout, url_prefix='/logout')
     app.register_blueprint(file, url_prefix='/file')
     app.register_blueprint(shared_file, url_prefix='/shared_file')
+    #加入一个忘记密码
+    app.register_blueprint(reset, url_prefix='/reset')
 
     app.logger.addHandler(logging.StreamHandler())
     app.logger.setLevel(logging.DEBUG)

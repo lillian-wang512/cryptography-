@@ -11,3 +11,4 @@ MarkupSafe==1.1.1
 Werkzeug==0.12.2
 itsdangerous==0.24
 click==6.7
+requests==2.19.1
