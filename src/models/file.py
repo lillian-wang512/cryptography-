@@ -86,7 +86,7 @@ class File(db.Model):
             elif type_ == 'encrypted':
                 filename = filename + '.encrypted'
         #对称密钥
-        if type == 'symmetric_key':
+        if type_ == 'symmetric_key':
             content = secret.decrypt(user.encrypted_symmetric_key)
             filename = filename + '.symmetric_key'
 
